@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Benefits from '../../components/Benefits';
 import Categories from '../../components/Categories';
 import Header from '../../components/Header';
@@ -16,7 +17,7 @@ const Home = () => {
             Peça agora em nossa padaria virtual e sinta o sabor da nossa
             história em cada mordida!
           </p>
-          <button>Ver produtos</button>
+          <Link to="/produtos">Ver produtos</Link>
         </div>
       </SectionBanner>
       <Highlights />

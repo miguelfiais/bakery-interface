@@ -1,4 +1,3 @@
-import cake from '../../assets/cake.png';
 import {
   ButtonProduct,
   Container,
@@ -8,17 +7,20 @@ import {
   PriceProduct,
 } from './styles';
 
-const CardProduct = () => {
+const CardProduct = ({ product }) => {
   return (
     <Container>
       <div>
-        <NameProduct>Bolo de Chocolate</NameProduct>
-        <PriceProduct>R$ 15,00</PriceProduct>
+        <NameProduct>{product.name}</NameProduct>
+        <PriceProduct>{product.price}</PriceProduct>
       </div>
       <DescriptionProduct>
         Is simply dummy text of the printing and typesetting industry. Lorem
       </DescriptionProduct>
-      <ImageProduct src={cake} alt="produto" />
+      <ImageProduct
+        src={`http://localhost:3000/image/${product.path}`}
+        alt="produto"
+      />
       <ButtonProduct>Peça agora</ButtonProduct>
     </Container>
   );

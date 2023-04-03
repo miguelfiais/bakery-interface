@@ -6,7 +6,6 @@ export const Container = styled.header`
   font-size: 16px;
   line-height: 24px;
   padding: 0 48px;
-  color: #fff;
   position: fixed;
   width: 100vw;
   z-index: 2;
@@ -17,8 +16,13 @@ export const Container = styled.header`
   }
   ul {
     display: flex;
-    list-style: none;
     gap: 48px;
+  }
+  a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
   }
   div {
     display: flex;
@@ -39,5 +43,6 @@ export const Container = styled.header`
     width: 24px;
     height: auto;
     cursor: pointer;
+    color: #fff;
   }
 `;

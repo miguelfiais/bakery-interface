@@ -23,7 +23,7 @@ export const SectionBanner = styled.section`
       font-size: 16px;
       line-height: 19px;
     }
-    button {
+    a {
       padding: 12px 20px;
       border: none;
       background: #c09191;

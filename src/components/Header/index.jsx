@@ -1,4 +1,5 @@
 import { FiShoppingCart } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { Container } from './styles';
 
@@ -9,10 +10,10 @@ const Header = () => {
         <img src={logo} alt="logo" />
         <ul>
           <li>
-            <a>Início</a>
+            <Link to="/">Início</Link>
           </li>
           <li>
-            <a>Produtos</a>
+            <Link to="/produtos">Produtos</Link>
           </li>
           <li>
             <a>Sobre nós</a>

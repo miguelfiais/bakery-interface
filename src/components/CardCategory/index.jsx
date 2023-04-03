@@ -1,11 +1,13 @@
-import cake from '../../assets/cake.png';
 import { ButtonCategory, Container, ImageCategory } from './styles';
 
-const CardCategory = () => {
+const CardCategory = ({ category }) => {
   return (
     <Container>
-      <ImageCategory src={cake} alt="foto-categoria" />
-      <ButtonCategory>Bolos</ButtonCategory>
+      <ImageCategory
+        src={`http://localhost:3000/image/${category.path}`}
+        alt="foto-categoria"
+      />
+      <ButtonCategory>{category.name}</ButtonCategory>
     </Container>
   );
 };

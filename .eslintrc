@@ -20,6 +20,11 @@
     "rules": {
         "react/react-in-jsx-scope": "off",
         "react/function-component-definition": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "import/prefer-default-export": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/jsx-no-useless-fragment": "off",
+        "react/button-has-type": "off",
+        "react/prop-types": "off"
     }
 }
