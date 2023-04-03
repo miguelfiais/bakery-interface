@@ -1,39 +1,43 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
+import { useState } from 'react';
+import { useProduct } from '../../hooks/ProductContext';
 import CardProduct from '../CardProduct';
 import { AllProducts, NavCategory } from './styles';
 
 const ItemsProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [categoryNames, setCategoryNames] = useState([]);
+  const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const GetProducts = () => {
-      api.get('/products').then((response) => setProducts(response.data));
-    };
+  const { products, categories } = useProduct();
 
-    const GetCategory = () => {
-      api.get('/category').then((response) => setCategoryNames(response.data));
-    };
-
-    GetProducts();
-    GetCategory();
-  }, []);
+  // eslint-disable-next-line no-console
+  let filteredCategory = [];
+  filteredCategory =
+    filter &&
+    products.filter((product) => product.Category.name.includes(filter));
 
   return (
     <>
       <NavCategory>
         <ul>
-          <li>Todos</li>
-          {categoryNames &&
-            categoryNames.map((category) => <li>{category.name}</li>)}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+          <li onClick={() => setFilter('')}>Todos</li>
+          {categories &&
+            categories.map((category) => (
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+              <li key={category.id} onClick={() => setFilter(category.name)}>
+                {category.name}
+              </li>
+            ))}
         </ul>
       </NavCategory>
       <AllProducts>
-        {products &&
-          products.map((product) => (
-            <CardProduct product={product} key={product.id} />
-          ))}
+        {filter.length > 0
+          ? filteredCategory.map((product) => (
+              <CardProduct product={product} key={product.id} />
+            ))
+          : products &&
+            products.map((product) => (
+              <CardProduct product={product} key={product.id} />
+            ))}
       </AllProducts>
     </>
   );
