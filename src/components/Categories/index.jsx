@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
+import { useProduct } from '../../hooks/ProductContext';
 import CardCategory from '../CardCategory';
 import Title from '../Title';
 import { Container, ContainerCategory } from './styles';
 
 const Categories = () => {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const GetCategories = async () => {
-      await api
-        .get('/category')
-        .then((response) => setCategories(response.data));
-    };
-    GetCategories();
-  }, []);
+  const { categories } = useProduct();
 
   return (
     <Container>
