@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  background: #a499a6;
+  background: rgba(0, 0, 0, 0.4);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  padding: 0 48px;
+  padding: 8px 48px;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   z-index: 2;
   nav {
     display: flex;
@@ -23,6 +23,22 @@ export const Container = styled.header`
     font-size: 16px;
     line-height: 19px;
     color: #ffffff;
+    position: relative;
+    span {
+      background: #8c4d46;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #ffffff;
+    }
   }
   div {
     display: flex;

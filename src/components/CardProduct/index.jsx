@@ -1,27 +1,37 @@
+import { useCart } from '../../hooks/CartContext';
+import { formartPrice } from '../../utils/utils';
 import {
   ButtonProduct,
   Container,
-  DescriptionProduct,
   ImageProduct,
   NameProduct,
   PriceProduct,
 } from './styles';
 
 const CardProduct = ({ product }) => {
+  const { cart, setCart } = useCart();
+
+  let productsInCart = [];
+  const addToCart = async (item) => {
+    productsInCart = [...cart, item];
+    setCart(productsInCart);
+    localStorage.setItem('bakeryCart', JSON.stringify(productsInCart));
+  };
+
   return (
     <Container>
       <div>
         <NameProduct>{product.name}</NameProduct>
-        <PriceProduct>{product.price}</PriceProduct>
+        <PriceProduct>{formartPrice(product.price)}</PriceProduct>
       </div>
-      <DescriptionProduct>
-        Is simply dummy text of the printing and typesetting industry. Lorem
-      </DescriptionProduct>
+
       <ImageProduct
         src={`http://localhost:3000/image/${product.path}`}
         alt="produto"
       />
-      <ButtonProduct>Peça agora</ButtonProduct>
+      <ButtonProduct onClick={() => addToCart(product)}>
+        Peça agora
+      </ButtonProduct>
     </Container>
   );
 };

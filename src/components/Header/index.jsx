@@ -1,9 +1,11 @@
 import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
+import { useCart } from '../../hooks/CartContext';
 import { Container } from './styles';
 
 const Header = () => {
+  const { cart } = useCart();
   return (
     <Container>
       <nav>
@@ -24,7 +26,10 @@ const Header = () => {
         </ul>
         <div>
           <button>Entrar</button>
-          <FiShoppingCart />
+          <Link to="/carrinho">
+            <FiShoppingCart />
+            <span>{cart.length}</span>
+          </Link>
         </div>
       </nav>
     </Container>
