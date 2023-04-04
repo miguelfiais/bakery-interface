@@ -11,6 +11,12 @@ export default createGlobalStyle`
     button, a{
         cursor: pointer;
     }
+    button:hover, a:hover{
+        opacity: 0.8;
+    }
+    button:active, a:active{
+        opacity: 0.6;
+    }
     a{
         text-decoration: none;
     }

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ContainerTable = styled.table`
   width: 100%;
   max-width: 1000px;
-  margin: 32px auto 0;
   border-radius: 12px;
   padding: 16px;
   background: #fff;

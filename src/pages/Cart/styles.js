@@ -13,6 +13,13 @@ export const Container = styled.div`
     text-align: center;
     margin-top: 16px;
   }
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+    gap: 16px;
+  }
 `;
 
 export const BannerCart = styled.section`
