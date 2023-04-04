@@ -44,15 +44,20 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
     gap: 36px;
-    button {
-      padding: 8px 20px;
-      border: none;
-      border-radius: 4px;
-      background: #fff;
-      color: #461d1a;
+    .login,
+    .user,
+    .logout {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #fff;
       font-weight: 500;
       font-size: 16px;
       line-height: 19px;
+    }
+    .logout {
+      background: transparent;
+      border: none;
     }
   }
   svg {

@@ -29,6 +29,9 @@
         "jsx-a11y/control-has-associated-label": "off",
         "react/jsx-no-constructed-context-values": "off",
         "no-unused-expressions": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-extraneous-dependencies": "off"
     }
 }
