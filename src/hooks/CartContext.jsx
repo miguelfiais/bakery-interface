@@ -13,8 +13,43 @@ export const CartProvider = ({ children }) => {
     getCartStorage();
   }, []);
 
+  const deleteFromCart = async (id) => {
+    const newCart = cart.filter((product) => product.id !== id);
+    setCart(newCart);
+    await localStorage.setItem('bakeryCart', JSON.stringify(newCart));
+  };
+
+  const increaseProducts = async (id) => {
+    const newCart = cart.map((prd) => {
+      return prd.id === id ? { ...prd, quantity: prd.quantity + 1 } : prd;
+    });
+    setCart(newCart);
+    await localStorage.setItem('bakeryCart', JSON.stringify(newCart));
+  };
+
+  const decreaseProducts = async (id) => {
+    const cartIndex = cart.findIndex((prd) => prd.id === id);
+    if (cart[cartIndex].quantity > 1) {
+      const newCart = cart.map((prd) => {
+        return prd.id === id ? { ...prd, quantity: prd.quantity - 1 } : prd;
+      });
+      setCart(newCart);
+      await localStorage.setItem('bakeryCart', JSON.stringify(newCart));
+    } else {
+      deleteFromCart(id);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        deleteFromCart,
+        increaseProducts,
+        decreaseProducts,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

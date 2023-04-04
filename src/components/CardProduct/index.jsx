@@ -13,9 +13,18 @@ const CardProduct = ({ product }) => {
 
   let productsInCart = [];
   const addToCart = async (item) => {
-    productsInCart = [...cart, item];
-    setCart(productsInCart);
-    localStorage.setItem('bakeryCart', JSON.stringify(productsInCart));
+    const cartIndex = cart.findIndex((prd) => prd.id === item.id);
+
+    if (cartIndex >= 0) {
+      productsInCart = cart;
+      productsInCart[cartIndex].quantity += 1;
+      setCart(productsInCart);
+    } else {
+      item.quantity = 1;
+      productsInCart = [...cart, item];
+      setCart(productsInCart);
+    }
+    await localStorage.setItem('bakeryCart', JSON.stringify(productsInCart));
   };
 
   return (
