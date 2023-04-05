@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   > div {
     width: 250px;
-    height: 250px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

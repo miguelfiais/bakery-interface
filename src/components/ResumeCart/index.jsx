@@ -1,13 +1,38 @@
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useCart } from '../../hooks/CartContext';
+import { useUser } from '../../hooks/UserContext';
+import { api } from '../../services/api';
 import { formartPrice } from '../../utils/utils';
 import { Container } from './styles';
 
 const ResumeCart = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   const total = cart.reduce((acc, cur) => {
     return acc + cur.price * cur.quantity;
   }, 0);
+
+  const sendOrder = async () => {
+    if (user) {
+      try {
+        await api.post('/orders', {
+          productId: cart.map((product) => product.id),
+        });
+        toast.success('Pedido realizado');
+        clearCart();
+      } catch (error) {
+        toast.error(error);
+      }
+    } else {
+      toast.warn('Faça login para realizar o pedido');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    }
+  };
 
   return (
     <Container>
@@ -17,15 +42,12 @@ const ResumeCart = () => {
           <p className="products">
             Produtos <span>{formartPrice(total)}</span>
           </p>
-          <p className="products">
-            Frete <span>R$5,00</span>
-          </p>
         </div>
         <p className="total">
-          Total <span>{formartPrice(total + 5)}</span>
+          Total <span>{formartPrice(total)}</span>
         </p>
       </div>
-      <button>Finalizar pedido</button>
+      <button onClick={sendOrder}>Finalizar pedido</button>
     </Container>
   );
 };

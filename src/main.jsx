@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </ProductProvider>
     </UserProvider>
     <GlobalStyles />
-    <ToastContainer autoClose={2000} />
+    <ToastContainer autoClose={1500} />
   </React.StrictMode>
 );

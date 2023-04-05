@@ -41,8 +41,8 @@ export const Container = styled.header`
     align-items: center;
     gap: 36px;
     .login,
-    .user,
-    .logout {
+    .logout,
+    .orders {
       display: flex;
       align-items: center;
       gap: 4px;
@@ -51,7 +51,8 @@ export const Container = styled.header`
       font-size: 16px;
       line-height: 19px;
     }
-    .logout {
+    .logout,
+    .orders {
       background: transparent;
       border: none;
     }

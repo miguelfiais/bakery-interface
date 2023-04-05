@@ -28,26 +28,23 @@ const Header = () => {
           </Li>
         </ul>
         <div>
+          <LinkStyles to="/carrinho">
+            <FiShoppingCart />
+            <span>{cart.length}</span>
+          </LinkStyles>
           {user ? (
-            <p className="user">
-              <FiUser />
-              {user.name}
-            </p>
+            <>
+              <LinkStyles to="/pedidos">Meus Pedidos</LinkStyles>
+              <button className="logout" onClick={logout}>
+                {user.name}
+                <FiLogOut />
+              </button>
+            </>
           ) : (
             <Link to="/login" className="login">
               <FiUser />
               Entrar
             </Link>
-          )}
-          <LinkStyles to="/carrinho">
-            <FiShoppingCart />
-            <span>{cart.length}</span>
-          </LinkStyles>
-          {user && (
-            <button className="logout" onClick={logout}>
-              <FiLogOut />
-              Sair
-            </button>
           )}
         </div>
       </nav>
