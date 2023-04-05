@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useCart } from '../../hooks/CartContext';
 import { formartPrice } from '../../utils/utils';
 import {
@@ -25,6 +26,7 @@ const CardProduct = ({ product }) => {
       setCart(productsInCart);
     }
     await localStorage.setItem('bakeryCart', JSON.stringify(productsInCart));
+    toast.success('Adicionado ao carrinho!');
   };
 
   return (

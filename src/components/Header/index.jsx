@@ -1,13 +1,14 @@
 import { FiLogOut, FiShoppingCart, FiUser } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { useCart } from '../../hooks/CartContext';
 import { useUser } from '../../hooks/UserContext';
-import { Container } from './styles';
+import { Container, Li, LinkStyles } from './styles';
 
 const Header = () => {
   const { cart } = useCart();
   const { user, setUser } = useUser();
+  const { pathname } = useLocation();
 
   const logout = () => {
     localStorage.removeItem('bakeryUser');
@@ -19,12 +20,12 @@ const Header = () => {
       <nav>
         <img src={logo} alt="logo" />
         <ul>
-          <li>
-            <Link to="/">Início</Link>
-          </li>
-          <li>
-            <Link to="/produtos">Produtos</Link>
-          </li>
+          <Li isActive={pathname === '/'}>
+            <LinkStyles to="/">Início</LinkStyles>
+          </Li>
+          <Li isActive={pathname === '/produtos'}>
+            <LinkStyles to="/produtos">Produtos</LinkStyles>
+          </Li>
         </ul>
         <div>
           {user ? (
@@ -34,13 +35,14 @@ const Header = () => {
             </p>
           ) : (
             <Link to="/login" className="login">
+              <FiUser />
               Entrar
             </Link>
           )}
-          <Link to="/carrinho">
+          <LinkStyles to="/carrinho">
             <FiShoppingCart />
             <span>{cart.length}</span>
-          </Link>
+          </LinkStyles>
           {user && (
             <button className="logout" onClick={logout}>
               <FiLogOut />

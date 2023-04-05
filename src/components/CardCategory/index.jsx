@@ -1,4 +1,4 @@
-import { ButtonCategory, Container, ImageCategory } from './styles';
+import { Container, ImageCategory, LinkCategory } from './styles';
 
 const CardCategory = ({ category }) => {
   return (
@@ -7,7 +7,12 @@ const CardCategory = ({ category }) => {
         src={`http://localhost:3000/image/${category.path}`}
         alt="foto-categoria"
       />
-      <ButtonCategory>{category.name}</ButtonCategory>
+      <LinkCategory
+        to={{ pathname: '/produtos' }}
+        state={{ categoryName: category.name }}
+      >
+        {category.name}
+      </LinkCategory>
     </Container>
   );
 };

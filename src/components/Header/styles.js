@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
   background: rgba(0, 0, 0, 0.4);
@@ -19,11 +20,6 @@ export const Container = styled.header`
     gap: 48px;
   }
   a {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: #ffffff;
-    position: relative;
     span {
       background: #8c4d46;
       display: flex;
@@ -66,4 +62,15 @@ export const Container = styled.header`
     cursor: pointer;
     color: #fff;
   }
+`;
+export const Li = styled.li`
+  border-bottom: ${(props) => (props.isActive ? '3px solid #8c4d46' : 'none')};
+`;
+
+export const LinkStyles = styled(Link)`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  position: relative;
 `;

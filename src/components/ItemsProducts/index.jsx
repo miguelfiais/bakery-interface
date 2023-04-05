@@ -1,31 +1,45 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useProduct } from '../../hooks/ProductContext';
 import CardProduct from '../CardProduct';
-import { AllProducts, NavCategory } from './styles';
+import { AllProducts, Li, NavCategory } from './styles';
 
 const ItemsProducts = () => {
-  const [filter, setFilter] = useState('');
-
+  const { state } = useLocation();
+  let categoryName = '';
+  if (state?.categoryName) {
+    categoryName = state.categoryName;
+  }
+  const [filter, setFilter] = useState(categoryName);
   const { products, categories } = useProduct();
+  const [linkActive, setLinkActive] = useState(categoryName);
 
-  // eslint-disable-next-line no-console
   let filteredCategory = [];
   filteredCategory =
     filter &&
     products.filter((product) => product.Category.name.includes(filter));
 
+  const filterCategory = (name) => {
+    setFilter(name);
+    setLinkActive(name);
+  };
+
   return (
     <>
       <NavCategory>
         <ul>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
-          <li onClick={() => setFilter('')}>Todos</li>
+          <Li onClick={() => filterCategory('')} active={linkActive === ''}>
+            Todos
+          </Li>
           {categories &&
             categories.map((category) => (
-              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-              <li key={category.id} onClick={() => setFilter(category.name)}>
+              <Li
+                key={category.id}
+                onClick={() => filterCategory(category.name)}
+                active={linkActive === category.name}
+              >
                 {category.name}
-              </li>
+              </Li>
             ))}
         </ul>
       </NavCategory>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: #f2f2f2;
@@ -11,7 +12,10 @@ export const ImageCategory = styled.img`
   margin: 0 auto;
 `;
 
-export const ButtonCategory = styled.button`
+export const LinkCategory = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   border: none;
   background: #a499a6;
