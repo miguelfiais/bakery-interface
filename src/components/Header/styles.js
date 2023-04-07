@@ -11,9 +11,13 @@ export const Container = styled.header`
   width: 100%;
   z-index: 2;
   nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     align-items: center;
-    justify-content: space-between;
+    img {
+      justify-self: flex-start;
+    }
   }
   ul {
     display: flex;
@@ -37,6 +41,7 @@ export const Container = styled.header`
     }
   }
   div {
+    justify-self: flex-end;
     display: flex;
     align-items: center;
     gap: 36px;

@@ -19,7 +19,7 @@ const ResumeCart = () => {
     if (user) {
       try {
         await api.post('/orders', {
-          productId: cart.map((product) => product.id),
+          product: cart,
         });
         toast.success('Pedido realizado');
         clearCart();
