@@ -69,7 +69,7 @@ export const Container = styled.header`
     color: #fff;
   }
 `;
-export const Li = styled.li`
+export const Span = styled.span`
   border-bottom: ${(props) => (props.isActive ? '3px solid #8c4d46' : 'none')};
 `;
 

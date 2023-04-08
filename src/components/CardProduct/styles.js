@@ -14,8 +14,8 @@ export const Container = styled.div`
 
 export const NameProduct = styled.h3`
   font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 19px;
   color: #8c4d46;
 `;
 
@@ -38,7 +38,7 @@ export const DescriptionProduct = styled.p`
 export const ImageProduct = styled.img`
   display: block;
   margin: 0 auto;
-  max-width: 250px;
+  max-width: 200px;
   width: 100%;
 `;
 

@@ -21,8 +21,8 @@ const UserOders = () => {
         <tr>
           <th />
           <th>Pedidos</th>
-          <th>Data dos pedidos</th>
-          <th>Status </th>
+          <th>Data do pedido</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>

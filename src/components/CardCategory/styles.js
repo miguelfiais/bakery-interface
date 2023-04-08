@@ -10,6 +10,8 @@ export const Container = styled.div`
 export const ImageCategory = styled.img`
   display: block;
   margin: 0 auto;
+  width: 200px;
+  height: 200px;
 `;
 
 export const LinkCategory = styled(Link)`

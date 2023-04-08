@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { useCart } from '../../hooks/CartContext';
 import { useUser } from '../../hooks/UserContext';
-import { Container, Li, LinkStyles } from './styles';
+import { Container, LinkStyles, Span } from './styles';
 
 const Header = () => {
   const { cart } = useCart();
@@ -20,12 +20,12 @@ const Header = () => {
       <nav>
         <img src={logo} alt="logo" />
         <ul>
-          <Li isActive={pathname === '/'}>
+          <Span isActive={pathname === '/'}>
             <LinkStyles to="/">Início</LinkStyles>
-          </Li>
-          <Li isActive={pathname === '/produtos'}>
+          </Span>
+          <Span isActive={pathname === '/produtos'}>
             <LinkStyles to="/produtos">Produtos</LinkStyles>
-          </Li>
+          </Span>
         </ul>
         <div>
           <LinkStyles to="/carrinho">
@@ -34,7 +34,9 @@ const Header = () => {
           </LinkStyles>
           {user ? (
             <>
-              <LinkStyles to="/pedidos">Meus Pedidos</LinkStyles>
+              <Span isActive={pathname === '/pedidos'}>
+                <LinkStyles to="/pedidos">Meus Pedidos</LinkStyles>
+              </Span>
               <button className="logout" onClick={logout}>
                 {user.name}
                 <FiLogOut />
