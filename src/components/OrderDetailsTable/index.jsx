@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { formartPrice } from '../../utils/utils';
-import { TrSecondary } from './styles';
+import { formartPrice, formatData } from '../../utils/utils';
+
+import { Span, TrSecondary } from './styles';
 
 const OrderDetailsTable = ({ order }) => {
   const [visible, setVisible] = useState(false);
@@ -9,13 +10,18 @@ const OrderDetailsTable = ({ order }) => {
     <>
       <tr className="main-td">
         <td>
-          <button className="details" onClick={() => setVisible(!visible)}>
-            Detalhes <MdKeyboardArrowDown />
+          <button onClick={() => setVisible(!visible)}>
+            Detalhes{' '}
+            <Span isVisible={visible}>
+              <MdKeyboardArrowDown />
+            </Span>
           </button>
         </td>
         <td>{order.id}</td>
-        <td>{order.created_at}</td>
+        <td>{formatData(order.created_at)}</td>
         <td>{order.status}</td>
+        <td />
+        <td />
       </tr>
       <TrSecondary isVisible={visible}>
         <th />
