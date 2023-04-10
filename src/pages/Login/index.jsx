@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import logo from '../../assets/logo.svg';
@@ -28,12 +28,13 @@ const schema = yup
   .required();
 
 const Login = () => {
-  const navigate = useNavigate();
   const { addUserStorage, user } = useUser();
 
   if (user) {
-    navigate('/');
+    return <Navigate replace to="/" />;
   }
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -55,7 +56,11 @@ const Login = () => {
       }
     );
     addUserStorage(data);
-    navigate('/');
+    if (data.admin) {
+      navigate('/admin-pedidos');
+    } else {
+      navigate('/');
+    }
   };
 
   return (
