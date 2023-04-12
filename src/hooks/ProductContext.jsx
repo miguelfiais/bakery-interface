@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { api } from '../services/api';
 
 const ProductContext = createContext({});
@@ -18,8 +19,16 @@ export const ProductProvider = ({ children }) => {
     GetCategories();
   }, []);
 
+  const deleteProduct = async (id) => {
+    await toast.promise(api.delete(`/products/${id}`), {
+      pending: 'Excluindo produto...',
+      success: 'Produto deletado com sucesso',
+      error: 'Falha ao excluir o produto',
+    });
+  };
+
   return (
-    <ProductContext.Provider value={{ products, categories }}>
+    <ProductContext.Provider value={{ products, categories, deleteProduct }}>
       {children}
     </ProductContext.Provider>
   );
