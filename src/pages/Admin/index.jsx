@@ -3,8 +3,8 @@ import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import { Container, Li } from './styles';
 
 const Admin = () => {
-  const use = localStorage.getItem('bakeryUser');
-  if (!use || !JSON.parse(use).admin) {
+  const user = localStorage.getItem('bakeryUser');
+  if (!user || !JSON.parse(user).admin) {
     return <Navigate replace to="/" />;
   }
 
@@ -20,6 +20,9 @@ const Admin = () => {
             </Li>
             <Li isActive={pathname === '/admin-produtos'}>
               <Link to="/admin-produtos">Produtos</Link>
+            </Li>
+            <Li isActive={pathname === '/admin-categorias'}>
+              <Link to="/admin-categorias">Categorias</Link>
             </Li>
             <Li isActive={pathname === '/admin-novo-produto'}>
               <Link to="/admin-novo-produto">Adicionar produto</Link>
