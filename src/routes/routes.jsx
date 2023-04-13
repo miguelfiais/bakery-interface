@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AdminCategories from '../components/AdminCategories';
 import AdminNewCategory from '../components/AdminNewCategory';
 import AdminNewProduct from '../components/AdminNewProduct';
 import AdminOrders from '../components/AdminOrders';
@@ -24,6 +25,7 @@ const MyRoutes = () => {
         <Route element={<Admin />}>
           <Route path="/admin-pedidos" element={<AdminOrders />} />
           <Route path="/admin-produtos" element={<AdminProducts />} />
+          <Route path="/admin-categorias" element={<AdminCategories />} />
           <Route path="/admin-novo-produto" element={<AdminNewProduct />} />
           <Route path="/admin-nova-categoria" element={<AdminNewCategory />} />
         </Route>

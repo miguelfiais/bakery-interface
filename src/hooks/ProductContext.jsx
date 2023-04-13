@@ -26,9 +26,18 @@ export const ProductProvider = ({ children }) => {
       error: 'Falha ao excluir o produto',
     });
   };
+  const deleteCategory = async (id) => {
+    await toast.promise(api.delete(`/category/${id}`), {
+      pending: 'Excluindo categoria...',
+      success: 'categoria deletada com sucesso',
+      error: 'Falha ao excluir a categoria',
+    });
+  };
 
   return (
-    <ProductContext.Provider value={{ products, categories, deleteProduct }}>
+    <ProductContext.Provider
+      value={{ products, categories, deleteProduct, deleteCategory }}
+    >
       {children}
     </ProductContext.Provider>
   );
