@@ -11,6 +11,6 @@ export const TrSecondary = styled.tr`
 `;
 
 export const Span = styled.span`
-  transform: ${(props) => (props.isVisible ? 'rotate(0)' : 'rotate(-90deg)')};
+  transform: ${(props) => (props.isVisible ? '0' : 'rotate(-90deg)')};
   transition: 0.3s;
 `;

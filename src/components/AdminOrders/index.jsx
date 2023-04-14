@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import AdminOrderDetails from '../AdminOrderDetails';
-import { Container } from './styles';
+import { Container, Li } from './styles';
 
 const AdminOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
+  const [statusActive, setStatusActive] = useState(0);
+  const [filterStatus, setFilterStatus] = useState('');
+
   useEffect(() => {
     const getAllOrders = async () => {
       const { data } = await api.get('/orders');
@@ -12,19 +15,36 @@ const AdminOrders = () => {
     };
     getAllOrders();
   }, []);
+
+  const status = [
+    { id: 0, label: 'Todos', value: '' },
+    { id: 1, label: 'Pedido Realizado', value: 'Pedido Realizado' },
+    { id: 2, label: 'Em preparação', value: 'Em preparação' },
+    { id: 3, label: 'Pedido pronto', value: 'Pedido pronto' },
+    { id: 4, label: 'Pedido á caminho', value: 'Pedido á caminho' },
+    { id: 5, label: 'Pedido entregue', value: 'Pedido entregue' },
+  ];
+
+  const filteredOrder = allOrders.filter((order) =>
+    order.status.includes(filterStatus)
+  );
+
   return (
     <Container>
       <nav>
         <ul>
-          <li>
-            <a>Todos</a>
-          </li>
-          <li>
-            <a>Pedido Realizado</a>
-          </li>
-          <li>
-            <a>Entregue</a>
-          </li>
+          {status.map((stt) => (
+            <Li key={stt.id} isActive={stt.id === statusActive}>
+              <button
+                onClick={() => {
+                  setStatusActive(stt.id);
+                  setFilterStatus(stt.value);
+                }}
+              >
+                {stt.label}
+              </button>
+            </Li>
+          ))}
         </ul>
       </nav>
       <div className="table">
@@ -32,12 +52,17 @@ const AdminOrders = () => {
           <p />
           <p>Pedido</p>
           <p>Nome do cliente</p>
-          <p>Status</p>
+          <p>Data do pedido</p>
+          <p>Data do pedido</p>
         </div>
         <div className="table-body">
-          {allOrders &&
-            allOrders.map((order) => (
-              <AdminOrderDetails order={order} key={order.id} />
+          {filteredOrder &&
+            filteredOrder.map((order) => (
+              <AdminOrderDetails
+                order={order}
+                key={order.id}
+                statusOrder={status}
+              />
             ))}
         </div>
       </div>

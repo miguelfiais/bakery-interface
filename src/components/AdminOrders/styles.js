@@ -9,16 +9,13 @@ export const Container = styled.div`
     align-items: center;
     gap: 16px;
   }
-  li {
-    padding: 0 12px;
-  }
-  li:first-child {
-    border-bottom: 3px solid #8c4d46;
-  }
-  a {
+  button {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
+    border: none;
+    background: transparent;
+    padding: 0 12px;
   }
   .table {
     max-width: 1200px;
@@ -32,7 +29,7 @@ export const Container = styled.div`
   .table-head,
   .tr-body {
     display: grid;
-    grid-template-columns: 30px 1fr 1fr 1fr;
+    grid-template-columns: 30px 1fr 1fr 1fr 1fr;
     p {
       padding: 20px;
       display: flex;
@@ -76,6 +73,10 @@ export const Container = styled.div`
       justify-content: center;
     }
   }
+`;
+
+export const Li = styled.li`
+  border-bottom: ${(props) => (props.isActive ? '3px solid #8c4d46' : 'none')};
 `;
 
 export const Details = styled.div`
