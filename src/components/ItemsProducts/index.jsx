@@ -10,32 +10,27 @@ const ItemsProducts = () => {
   if (state?.categoryName) {
     categoryName = state.categoryName;
   }
-  const [filter, setFilter] = useState(categoryName);
   const { products, categories } = useProduct();
   const [linkActive, setLinkActive] = useState(categoryName);
 
   let filteredCategory = [];
   filteredCategory =
-    filter &&
-    products.filter((product) => product.Category.name.includes(filter));
-
-  const filterCategory = (name) => {
-    setFilter(name);
-    setLinkActive(name);
-  };
+    linkActive.length > 0
+      ? products.filter((product) => product.Category.name.includes(linkActive))
+      : (filteredCategory = products);
 
   return (
     <>
       <NavCategory>
         <ul>
-          <Li onClick={() => filterCategory('')} active={linkActive === ''}>
+          <Li onClick={() => setLinkActive('')} active={linkActive === ''}>
             Todos
           </Li>
           {categories &&
             categories.map((category) => (
               <Li
                 key={category.id}
-                onClick={() => filterCategory(category.name)}
+                onClick={() => setLinkActive(category.name)}
                 active={linkActive === category.name}
               >
                 {category.name}
@@ -44,14 +39,10 @@ const ItemsProducts = () => {
         </ul>
       </NavCategory>
       <AllProducts>
-        {filter.length > 0
-          ? filteredCategory.map((product) => (
-              <CardProduct product={product} key={product.id} />
-            ))
-          : products &&
-            products.map((product) => (
-              <CardProduct product={product} key={product.id} />
-            ))}
+        {filteredCategory &&
+          filteredCategory.map((product) => (
+            <CardProduct product={product} key={product.id} />
+          ))}
       </AllProducts>
     </>
   );
