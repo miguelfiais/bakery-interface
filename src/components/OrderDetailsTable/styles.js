@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const TrSecondary = styled.tr`
-  display: ${(props) => (props.isVisible ? 'table-row' : 'none')};
+export const TrSecondary = styled.div`
+  display: ${(props) => (props.isVisible ? 'grid' : 'none')};
+  grid-template-columns: 80px 1fr 1fr 1fr 1fr 1fr;
   img {
     width: 50px;
-  }
-  th {
-    font-size: 14px;
   }
 `;
 

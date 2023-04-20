@@ -17,20 +17,18 @@ const UserOders = () => {
 
   return (
     <ContainerTable>
-      <thead>
-        <tr>
-          <th />
-          <th>Pedidos</th>
-          <th>Data do pedido</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
+      <div className="thead">
+        <p />
+        <p>Pedidos</p>
+        <p>Data do pedido</p>
+        <p>Status</p>
+      </div>
+      <div className="tbody">
         {orders &&
           orders.map((order) => (
             <OrderDetailsTable order={order} key={order.id} />
           ))}
-      </tbody>
+      </div>
     </ContainerTable>
   );
 };
