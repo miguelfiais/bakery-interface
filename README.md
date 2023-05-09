@@ -6,6 +6,9 @@ Padaria virtual que permite aos usuários visualizar e comprar produtos online. 
 <br />
 Além disso, os usuários podem adicionar os produtos ao carrinho, porém, precisam estar logados para finalizar a compra e visualizar os detalhes do pedido. O projeto também inclui um painel de administração para gerenciar categorias e produtos, além de permitir que o administrador coloque produtos em oferta e atualize o status dos pedidos.
 
+- [Acesse o back-end](https://github.com/miguelfiais/bakery-api)
+
+
 <div>
   <img width="600" src="https://github.com/miguelfiais/bakery-interface/assets/108070001/239018dc-09a8-4543-9f0b-5b656cd8581d" alt="tela inicial">
   <img width="600" src="https://github.com/miguelfiais/bakery-interface/assets/108070001/16a829e4-ad4e-469f-9b98-4c1462944f26" alt="tela de produtos">
